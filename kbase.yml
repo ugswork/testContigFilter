@@ -2,7 +2,7 @@ module-name:
     umaContigFilter
 
 module-description:
-    A KBase module
+    A KBase module -  a sample contig filter
 
 service-language:
     python

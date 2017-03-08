@@ -164,6 +164,27 @@ public class UmaContigFilterClient {
     }
 
     /**
+     * <p>Original spec-file function name: mySum_XY</p>
+     * <pre>
+     * </pre>
+     * @param   workspaceName   instance of String
+     * @param   valx   instance of original type "typeX"
+     * @param   valy   instance of original type "typeY"
+     * @return   parameter "output" of original type "typeXY"
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public String mySumXY(String workspaceName, Long valx, Long valy, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(workspaceName);
+        args.add(valx);
+        args.add(valy);
+        TypeReference<List<String>> retType = new TypeReference<List<String>>() {};
+        List<String> res = caller.jsonrpcCall("umaContigFilter.mySum_XY", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        return res.get(0);
+    }
+
+    /**
      * <p>Original spec-file function name: filter_contigs</p>
      * <pre>
      * The actual function is declared using 'funcdef' to specify the name

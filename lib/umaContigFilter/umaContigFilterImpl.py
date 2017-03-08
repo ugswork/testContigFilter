@@ -26,8 +26,8 @@ This sample module contains one small method - filter_contigs.
     # the latter method is running.
     ######################################### noqa
     VERSION = "0.0.1"
-    GIT_URL = ""
-    GIT_COMMIT_HASH = ""
+    GIT_URL = "https://github.com/uganapathy/umaContigFilter.git"
+    GIT_COMMIT_HASH = "85d4912c031a8acb57f7c732d8b5ab7d6c6f2346"
 
     #BEGIN_CLASS_HEADER
     # Class variables and functions can be defined in this block
@@ -46,6 +46,26 @@ This sample module contains one small method - filter_contigs.
         #END_CONSTRUCTOR
         pass
 
+
+    def mySum_XY(self, ctx, workspace_name, valx, valy):
+        """
+        :param workspace_name: instance of String
+        :param valx: instance of type "typeX"
+        :param valy: instance of type "typeY"
+        :returns: instance of type "typeXY"
+        """
+        # ctx is the context object
+        # return variables are: output
+        #BEGIN mySum_XY
+        output = str(valx) + str(valy)
+        #END mySum_XY
+
+        # At some point might do deeper type checking...
+        if not isinstance(output, basestring):
+            raise ValueError('Method mySum_XY return value ' +
+                             'output is not type basestring as required.')
+        # return the results
+        return [output]
 
     def filter_contigs(self, ctx, params):
         """

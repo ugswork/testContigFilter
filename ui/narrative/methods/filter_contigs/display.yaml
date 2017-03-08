@@ -23,6 +23,7 @@ suggestions:
         next:
             [annotate_contigset]
 
+
 #
 # Configure the display and description of parameters
 #
@@ -39,3 +40,5 @@ parameters :
             All contigs below this length will be removed
 description : |
     <p>This is a simple method designed to illustrate the KBase SDK.</p>
+
+

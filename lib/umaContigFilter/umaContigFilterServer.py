@@ -333,6 +333,10 @@ class Application(object):
         self.serverlog.set_log_level(6)
         self.rpc_service = JSONRPCServiceCustom()
         self.method_authentication = dict()
+        self.rpc_service.add(impl_umaContigFilter.mySum_XY,
+                             name='umaContigFilter.mySum_XY',
+                             types=[basestring, int, int])
+        self.method_authentication['umaContigFilter.mySum_XY'] = 'required'  # noqa
         self.rpc_service.add(impl_umaContigFilter.filter_contigs,
                              name='umaContigFilter.filter_contigs',
                              types=[dict])

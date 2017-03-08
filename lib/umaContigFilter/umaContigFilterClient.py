@@ -33,6 +33,17 @@ class umaContigFilter(object):
             trust_all_ssl_certificates=trust_all_ssl_certificates,
             auth_svc=auth_svc)
 
+    def mySum_XY(self, workspace_name, valx, valy, context=None):
+        """
+        :param workspace_name: instance of String
+        :param valx: instance of type "typeX"
+        :param valy: instance of type "typeY"
+        :returns: instance of type "typeXY"
+        """
+        return self._client.call_method(
+            'umaContigFilter.mySum_XY',
+            [workspace_name, valx, valy], self._service_ver, context)
+
     def filter_contigs(self, params, context=None):
         """
         The actual function is declared using 'funcdef' to specify the name

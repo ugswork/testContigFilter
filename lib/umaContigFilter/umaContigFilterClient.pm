@@ -110,6 +110,100 @@ sub new
 
 
 
+=head2 mySum_XY
+
+  $output = $obj->mySum_XY($workspace_name, $valx, $valy)
+
+=over 4
+
+=item Parameter and return types
+
+=begin html
+
+<pre>
+$workspace_name is a string
+$valx is an umaContigFilter.typeX
+$valy is an umaContigFilter.typeY
+$output is an umaContigFilter.typeXY
+typeX is an int
+typeY is an int
+typeXY is a string
+
+</pre>
+
+=end html
+
+=begin text
+
+$workspace_name is a string
+$valx is an umaContigFilter.typeX
+$valy is an umaContigFilter.typeY
+$output is an umaContigFilter.typeXY
+typeX is an int
+typeY is an int
+typeXY is a string
+
+
+=end text
+
+=item Description
+
+
+
+=back
+
+=cut
+
+ sub mySum_XY
+{
+    my($self, @args) = @_;
+
+# Authentication: required
+
+    if ((my $n = @args) != 3)
+    {
+	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
+							       "Invalid argument count for function mySum_XY (received $n, expecting 3)");
+    }
+    {
+	my($workspace_name, $valx, $valy) = @args;
+
+	my @_bad_arguments;
+        (!ref($workspace_name)) or push(@_bad_arguments, "Invalid type for argument 1 \"workspace_name\" (value was \"$workspace_name\")");
+        (!ref($valx)) or push(@_bad_arguments, "Invalid type for argument 2 \"valx\" (value was \"$valx\")");
+        (!ref($valy)) or push(@_bad_arguments, "Invalid type for argument 3 \"valy\" (value was \"$valy\")");
+        if (@_bad_arguments) {
+	    my $msg = "Invalid arguments passed to mySum_XY:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
+								   method_name => 'mySum_XY');
+	}
+    }
+
+    my $url = $self->{url};
+    my $result = $self->{client}->call($url, $self->{headers}, {
+	    method => "umaContigFilter.mySum_XY",
+	    params => \@args,
+    });
+    if ($result) {
+	if ($result->is_error) {
+	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
+					       code => $result->content->{error}->{code},
+					       method_name => 'mySum_XY',
+					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
+					      );
+	} else {
+	    return wantarray ? @{$result->result} : $result->result->[0];
+	}
+    } else {
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method mySum_XY",
+					    status_line => $self->{client}->status_line,
+					    method_name => 'mySum_XY',
+				       );
+    }
+}
+ 
+
+
 =head2 filter_contigs
 
   $output = $obj->filter_contigs($params)
@@ -433,6 +527,84 @@ n_initial_contigs has a value which is an int
 n_contigs_removed has a value which is an int
 n_contigs_remaining has a value which is an int
 
+
+=end text
+
+=back
+
+
+
+=head2 typeX
+
+=over 4
+
+
+
+=item Definition
+
+=begin html
+
+<pre>
+an int
+</pre>
+
+=end html
+
+=begin text
+
+an int
+
+=end text
+
+=back
+
+
+
+=head2 typeY
+
+=over 4
+
+
+
+=item Definition
+
+=begin html
+
+<pre>
+an int
+</pre>
+
+=end html
+
+=begin text
+
+an int
+
+=end text
+
+=back
+
+
+
+=head2 typeXY
+
+=over 4
+
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a string
+</pre>
+
+=end html
+
+=begin text
+
+a string
 
 =end text
 
