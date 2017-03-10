@@ -164,32 +164,11 @@ public class UmaContigFilterClient {
     }
 
     /**
-     * <p>Original spec-file function name: mySum_XY</p>
-     * <pre>
-     * </pre>
-     * @param   workspaceName   instance of String
-     * @param   valx   instance of original type "typeX"
-     * @param   valy   instance of original type "typeY"
-     * @return   parameter "output" of original type "typeXY"
-     * @throws IOException if an IO exception occurs
-     * @throws JsonClientException if a JSON RPC exception occurs
-     */
-    public String mySumXY(String workspaceName, Long valx, Long valy, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
-        List<Object> args = new ArrayList<Object>();
-        args.add(workspaceName);
-        args.add(valx);
-        args.add(valy);
-        TypeReference<List<String>> retType = new TypeReference<List<String>>() {};
-        List<String> res = caller.jsonrpcCall("umaContigFilter.mySum_XY", args, retType, true, true, jsonRpcContext, this.serviceVersion);
-        return res.get(0);
-    }
-
-    /**
      * <p>Original spec-file function name: filter_contigs</p>
      * <pre>
      * The actual function is declared using 'funcdef' to specify the name
      * and input/return arguments to the function.  For all typical KBase
-     * Apps that run in the Narrative, your function should have the 
+     * Apps that run in the Narrative, your function should have the
      * 'authentication required' modifier.
      * </pre>
      * @param   params   instance of type {@link us.kbase.umacontigfilter.FilterContigsParams FilterContigsParams}
@@ -202,6 +181,23 @@ public class UmaContigFilterClient {
         args.add(params);
         TypeReference<List<FilterContigsResults>> retType = new TypeReference<List<FilterContigsResults>>() {};
         List<FilterContigsResults> res = caller.jsonrpcCall("umaContigFilter.filter_contigs", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        return res.get(0);
+    }
+
+    /**
+     * <p>Original spec-file function name: myStringFunc</p>
+     * <pre>
+     * </pre>
+     * @param   testParams   instance of type {@link us.kbase.umacontigfilter.TestParams TestParams}
+     * @return   parameter "output" of type {@link us.kbase.umacontigfilter.TestResult TestResult} (original type "testResult")
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public TestResult myStringFunc(TestParams testParams, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(testParams);
+        TypeReference<List<TestResult>> retType = new TypeReference<List<TestResult>>() {};
+        List<TestResult> res = caller.jsonrpcCall("umaContigFilter.myStringFunc", args, retType, true, true, jsonRpcContext, this.serviceVersion);
         return res.get(0);
     }
 

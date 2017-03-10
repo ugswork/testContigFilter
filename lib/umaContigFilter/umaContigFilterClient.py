@@ -33,22 +33,11 @@ class umaContigFilter(object):
             trust_all_ssl_certificates=trust_all_ssl_certificates,
             auth_svc=auth_svc)
 
-    def mySum_XY(self, workspace_name, valx, valy, context=None):
-        """
-        :param workspace_name: instance of String
-        :param valx: instance of type "typeX"
-        :param valy: instance of type "typeY"
-        :returns: instance of type "typeXY"
-        """
-        return self._client.call_method(
-            'umaContigFilter.mySum_XY',
-            [workspace_name, valx, valy], self._service_ver, context)
-
     def filter_contigs(self, params, context=None):
         """
         The actual function is declared using 'funcdef' to specify the name
         and input/return arguments to the function.  For all typical KBase
-        Apps that run in the Narrative, your function should have the 
+        Apps that run in the Narrative, your function should have the
         'authentication required' modifier.
         :param params: instance of type "FilterContigsParams" (A 'typedef'
            can also be used to define compound or container objects, like
@@ -84,6 +73,19 @@ class umaContigFilter(object):
         return self._client.call_method(
             'umaContigFilter.filter_contigs',
             [params], self._service_ver, context)
+
+    def myStringFunc(self, test_params, context=None):
+        """
+        :param test_params: instance of type "TestParams" -> structure:
+           parameter "workspace_name" of String, parameter "testStr" of type
+           "strType" (*  start addition  *), parameter "testInt" of Long
+        :returns: instance of type "testResult" -> structure: parameter
+           "result_str" of type "strType" (*  start addition  *), parameter
+           "result_length" of type "intType"
+        """
+        return self._client.call_method(
+            'umaContigFilter.myStringFunc',
+            [test_params], self._service_ver, context)
 
     def status(self, context=None):
         return self._client.call_method('umaContigFilter.status',

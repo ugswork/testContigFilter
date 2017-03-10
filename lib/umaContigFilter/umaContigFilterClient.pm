@@ -110,100 +110,6 @@ sub new
 
 
 
-=head2 mySum_XY
-
-  $output = $obj->mySum_XY($workspace_name, $valx, $valy)
-
-=over 4
-
-=item Parameter and return types
-
-=begin html
-
-<pre>
-$workspace_name is a string
-$valx is an umaContigFilter.typeX
-$valy is an umaContigFilter.typeY
-$output is an umaContigFilter.typeXY
-typeX is an int
-typeY is an int
-typeXY is a string
-
-</pre>
-
-=end html
-
-=begin text
-
-$workspace_name is a string
-$valx is an umaContigFilter.typeX
-$valy is an umaContigFilter.typeY
-$output is an umaContigFilter.typeXY
-typeX is an int
-typeY is an int
-typeXY is a string
-
-
-=end text
-
-=item Description
-
-
-
-=back
-
-=cut
-
- sub mySum_XY
-{
-    my($self, @args) = @_;
-
-# Authentication: required
-
-    if ((my $n = @args) != 3)
-    {
-	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
-							       "Invalid argument count for function mySum_XY (received $n, expecting 3)");
-    }
-    {
-	my($workspace_name, $valx, $valy) = @args;
-
-	my @_bad_arguments;
-        (!ref($workspace_name)) or push(@_bad_arguments, "Invalid type for argument 1 \"workspace_name\" (value was \"$workspace_name\")");
-        (!ref($valx)) or push(@_bad_arguments, "Invalid type for argument 2 \"valx\" (value was \"$valx\")");
-        (!ref($valy)) or push(@_bad_arguments, "Invalid type for argument 3 \"valy\" (value was \"$valy\")");
-        if (@_bad_arguments) {
-	    my $msg = "Invalid arguments passed to mySum_XY:\n" . join("", map { "\t$_\n" } @_bad_arguments);
-	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
-								   method_name => 'mySum_XY');
-	}
-    }
-
-    my $url = $self->{url};
-    my $result = $self->{client}->call($url, $self->{headers}, {
-	    method => "umaContigFilter.mySum_XY",
-	    params => \@args,
-    });
-    if ($result) {
-	if ($result->is_error) {
-	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
-					       code => $result->content->{error}->{code},
-					       method_name => 'mySum_XY',
-					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
-					      );
-	} else {
-	    return wantarray ? @{$result->result} : $result->result->[0];
-	}
-    } else {
-        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method mySum_XY",
-					    status_line => $self->{client}->status_line,
-					    method_name => 'mySum_XY',
-				       );
-    }
-}
- 
-
-
 =head2 filter_contigs
 
   $output = $obj->filter_contigs($params)
@@ -258,7 +164,7 @@ FilterContigsResults is a reference to a hash where the following keys are defin
 
 The actual function is declared using 'funcdef' to specify the name
 and input/return arguments to the function.  For all typical KBase
-Apps that run in the Narrative, your function should have the 
+Apps that run in the Narrative, your function should have the
 'authentication required' modifier.
 
 =back
@@ -311,6 +217,106 @@ Apps that run in the Narrative, your function should have the
     }
 }
  
+
+
+=head2 myStringFunc
+
+  $output = $obj->myStringFunc($test_params)
+
+=over 4
+
+=item Parameter and return types
+
+=begin html
+
+<pre>
+$test_params is an umaContigFilter.TestParams
+$output is an umaContigFilter.testResult
+TestParams is a reference to a hash where the following keys are defined:
+	workspace_name has a value which is a string
+	testStr has a value which is an umaContigFilter.strType
+	testInt has a value which is an int
+strType is a string
+testResult is a reference to a hash where the following keys are defined:
+	result_str has a value which is an umaContigFilter.strType
+	result_length has a value which is an umaContigFilter.intType
+intType is an int
+
+</pre>
+
+=end html
+
+=begin text
+
+$test_params is an umaContigFilter.TestParams
+$output is an umaContigFilter.testResult
+TestParams is a reference to a hash where the following keys are defined:
+	workspace_name has a value which is a string
+	testStr has a value which is an umaContigFilter.strType
+	testInt has a value which is an int
+strType is a string
+testResult is a reference to a hash where the following keys are defined:
+	result_str has a value which is an umaContigFilter.strType
+	result_length has a value which is an umaContigFilter.intType
+intType is an int
+
+
+=end text
+
+=item Description
+
+
+
+=back
+
+=cut
+
+ sub myStringFunc
+{
+    my($self, @args) = @_;
+
+# Authentication: required
+
+    if ((my $n = @args) != 1)
+    {
+	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
+							       "Invalid argument count for function myStringFunc (received $n, expecting 1)");
+    }
+    {
+	my($test_params) = @args;
+
+	my @_bad_arguments;
+        (ref($test_params) eq 'HASH') or push(@_bad_arguments, "Invalid type for argument 1 \"test_params\" (value was \"$test_params\")");
+        if (@_bad_arguments) {
+	    my $msg = "Invalid arguments passed to myStringFunc:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
+								   method_name => 'myStringFunc');
+	}
+    }
+
+    my $url = $self->{url};
+    my $result = $self->{client}->call($url, $self->{headers}, {
+	    method => "umaContigFilter.myStringFunc",
+	    params => \@args,
+    });
+    if ($result) {
+	if ($result->is_error) {
+	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
+					       code => $result->content->{error}->{code},
+					       method_name => 'myStringFunc',
+					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
+					      );
+	} else {
+	    return wantarray ? @{$result->result} : $result->result->[0];
+	}
+    } else {
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method myStringFunc",
+					    status_line => $self->{client}->status_line,
+					    method_name => 'myStringFunc',
+				       );
+    }
+}
+ 
   
 sub status
 {
@@ -354,16 +360,16 @@ sub version {
             Bio::KBase::Exceptions::JSONRPC->throw(
                 error => $result->error_message,
                 code => $result->content->{code},
-                method_name => 'filter_contigs',
+                method_name => 'myStringFunc',
             );
         } else {
             return wantarray ? @{$result->result} : $result->result->[0];
         }
     } else {
         Bio::KBase::Exceptions::HTTP->throw(
-            error => "Error invoking method filter_contigs",
+            error => "Error invoking method myStringFunc",
             status_line => $self->{client}->status_line,
-            method_name => 'filter_contigs',
+            method_name => 'myStringFunc',
         );
     }
 }
@@ -534,7 +540,38 @@ n_contigs_remaining has a value which is an int
 
 
 
-=head2 typeX
+=head2 strType
+
+=over 4
+
+
+
+=item Description
+
+*  start addition  *
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a string
+</pre>
+
+=end html
+
+=begin text
+
+a string
+
+=end text
+
+=back
+
+
+
+=head2 intType
 
 =over 4
 
@@ -560,7 +597,7 @@ an int
 
 
 
-=head2 typeY
+=head2 TestParams
 
 =over 4
 
@@ -571,14 +608,22 @@ an int
 =begin html
 
 <pre>
-an int
+a reference to a hash where the following keys are defined:
+workspace_name has a value which is a string
+testStr has a value which is an umaContigFilter.strType
+testInt has a value which is an int
+
 </pre>
 
 =end html
 
 =begin text
 
-an int
+a reference to a hash where the following keys are defined:
+workspace_name has a value which is a string
+testStr has a value which is an umaContigFilter.strType
+testInt has a value which is an int
+
 
 =end text
 
@@ -586,7 +631,7 @@ an int
 
 
 
-=head2 typeXY
+=head2 testResult
 
 =over 4
 
@@ -597,14 +642,20 @@ an int
 =begin html
 
 <pre>
-a string
+a reference to a hash where the following keys are defined:
+result_str has a value which is an umaContigFilter.strType
+result_length has a value which is an umaContigFilter.intType
+
 </pre>
 
 =end html
 
 =begin text
 
-a string
+a reference to a hash where the following keys are defined:
+result_str has a value which is an umaContigFilter.strType
+result_length has a value which is an umaContigFilter.intType
+
 
 =end text
 

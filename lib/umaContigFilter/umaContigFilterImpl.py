@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 #BEGIN_HEADER
-# The header block is where all import statments should live
-import os
-from Bio import SeqIO
-from pprint import pprint, pformat
-from AssemblyUtil.AssemblyUtilClient import AssemblyUtil
-from KBaseReport.KBaseReportClient import KBaseReport
 #END_HEADER
 
 
@@ -27,51 +21,24 @@ This sample module contains one small method - filter_contigs.
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/uganapathy/umaContigFilter.git"
-    GIT_COMMIT_HASH = "85d4912c031a8acb57f7c732d8b5ab7d6c6f2346"
+    GIT_COMMIT_HASH = "1dbe433ebc3c516b99cbf5c8219fad635b15ac1c"
 
     #BEGIN_CLASS_HEADER
-    # Class variables and functions can be defined in this block
     #END_CLASS_HEADER
 
     # config contains contents of config file in a hash or None if it couldn't
     # be found
     def __init__(self, config):
         #BEGIN_CONSTRUCTOR
-        
-        # Any configuration parameters that are important should be parsed and
-        # saved in the constructor.
-        self.callback_url = os.environ['SDK_CALLBACK_URL']
-        self.shared_folder = config['scratch']
-
         #END_CONSTRUCTOR
         pass
 
-
-    def mySum_XY(self, ctx, workspace_name, valx, valy):
-        """
-        :param workspace_name: instance of String
-        :param valx: instance of type "typeX"
-        :param valy: instance of type "typeY"
-        :returns: instance of type "typeXY"
-        """
-        # ctx is the context object
-        # return variables are: output
-        #BEGIN mySum_XY
-        output = str(valx) + str(valy)
-        #END mySum_XY
-
-        # At some point might do deeper type checking...
-        if not isinstance(output, basestring):
-            raise ValueError('Method mySum_XY return value ' +
-                             'output is not type basestring as required.')
-        # return the results
-        return [output]
 
     def filter_contigs(self, ctx, params):
         """
         The actual function is declared using 'funcdef' to specify the name
         and input/return arguments to the function.  For all typical KBase
-        Apps that run in the Narrative, your function should have the 
+        Apps that run in the Narrative, your function should have the
         'authentication required' modifier.
         :param params: instance of type "FilterContigsParams" (A 'typedef'
            can also be used to define compound or container objects, like
@@ -110,7 +77,7 @@ This sample module contains one small method - filter_contigs.
 
         # Print statements to stdout/stderr are captured and available as the App log
         print('Starting Filter Contigs function. Params=')
-        pprint(params)
+        print(params)
 
         # Step 1 - Parse/examine the parameters and catch any errors
         # It is important to check that parameters exist and are defined, and that nice error
@@ -135,14 +102,12 @@ This sample module contains one small method - filter_contigs.
         if min_length < 0:
             raise ValueError('min_length parameter cannot be negative (' + str(min_length) + ')')
 
-
         # Step 2 - Download the input data as a Fasta and
         # We can use the AssemblyUtils module to download a FASTA file from our Assembly data object.
         # The return object gives us the path to the file that was created.
         print('Downloading Assembly data as a Fasta file.')
         assemblyUtil = AssemblyUtil(self.callback_url)
         fasta_file = assemblyUtil.get_assembly_as_fasta({'ref': assembly_input_ref})
-
 
         # Step 3 - Actually perform the filter operation, saving the good contigs to a new fasta file.
         # We can use BioPython to parse the Fasta file and build and save the output to a file.
@@ -159,14 +124,12 @@ This sample module contains one small method - filter_contigs.
         filtered_fasta_file = os.path.join(self.shared_folder, 'filtered.fasta')
         SeqIO.write(good_contigs, filtered_fasta_file, 'fasta')
 
-
         # Step 4 - Save the new Assembly back to the system
         print('Uploading filtered Assembly data.')
         new_assembly = assemblyUtil.save_assembly_from_fasta({'file': {'path': filtered_fasta_file},
                                                               'workspace_name': workspace_name,
                                                               'assembly_name': fasta_file['assembly_name']
                                                               })
-
 
         # Step 5 - Build a Report and return
         reportObj = {
@@ -175,7 +138,6 @@ This sample module contains one small method - filter_contigs.
         }
         report = KBaseReport(self.callback_url)
         report_info = report.create({'report': reportObj, 'workspace_name': params['workspace_name']})
-
 
         # STEP 6: contruct the output to send back
         output = {'report_name': report_info['name'],
@@ -186,12 +148,60 @@ This sample module contains one small method - filter_contigs.
                   'n_contigs_remaining': n_remaining
                   }
         print('returning:' + pformat(output))
-                
+
         #END filter_contigs
 
         # At some point might do deeper type checking...
         if not isinstance(output, dict):
             raise ValueError('Method filter_contigs return value ' +
+                             'output is not type dict as required.')
+        # return the results
+        return [output]
+
+    def myStringFunc(self, ctx, test_params):
+        """
+        :param test_params: instance of type "TestParams" -> structure:
+           parameter "workspace_name" of String, parameter "testStr" of type
+           "strType" (*  start addition  *), parameter "testInt" of Long
+        :returns: instance of type "testResult" -> structure: parameter
+           "result_str" of type "strType" (*  start addition  *), parameter
+           "result_length" of type "intType"
+        """
+        # ctx is the context object
+        # return variables are: output
+        #BEGIN myStringFunc
+
+        print('Validating parameters.')
+        if 'workspace_name' not in test_params:
+            raise ValueError('Parameter workspace_name is not set in input arguments')
+        workspace_name = test_params['workspace_name']
+
+        if 'testStr' not in test_params:
+            raise ValueError('Parameter testStr is not set in input arguments')
+        testStr = test_params['testStr']
+
+        if 'testInt' not in test_params:
+            raise ValueError('Parameter testInt is not set in input arguments')
+        testInt_orig = test_params['testInt']
+        testInt = None
+        try:
+            testInt = testInt_orig
+        except ValueError:
+            raise ValueError('Cannot parse integer from testInt parameter (' + str(testInt_orig) + ')')
+        if testInt < 0:
+            raise ValueError('testInt parameter cannot be negative (' + str(testInt) + ')')
+
+        resultStr = testStr + str(testInt) + str(testInt)
+
+        output = {'result_str': resultStr,
+                  'result_length': len(resultStr)
+                 }
+
+        #END myStringFunc
+
+        # At some point might do deeper type checking...
+        if not isinstance(output, dict):
+            raise ValueError('Method myStringFunc return value ' +
                              'output is not type dict as required.')
         # return the results
         return [output]

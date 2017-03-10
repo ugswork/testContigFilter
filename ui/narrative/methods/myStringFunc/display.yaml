@@ -1,0 +1,41 @@
+#
+# define display information
+#
+name: My String Function
+tooltip: |
+   My string function does not make much sense
+screenshots: []
+
+icon: null
+
+#
+# define a set of similar methods that might be useful to the user
+#
+suggestions:
+    apps:
+        related:
+            []
+        next:
+            []
+    methods:
+        related:
+            []
+        next:
+            [annotate_contigset]
+
+#
+# Configure the display and description of parameters
+#
+parameters :
+    testStr :
+        ui-name : |
+            StringParameter
+        short-hint : |
+            Any string
+    testInt :
+        ui-name : |
+            IntParameter
+        short-hint : |
+            Any integer
+description : |
+    <p>This is a simple method designed to illustrate the KBase SDK.</p>

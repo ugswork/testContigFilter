@@ -50,35 +50,34 @@ module umaContigFilter {
         int n_contigs_remaining;
     } FilterContigsResults;
 
-    typedef int typeX;
-    typedef int typeY;
-    typedef string typeXY;
-
-    funcdef mySum_XY(string workspace_name, typeX valx, typeY valy)
-        returns (typeXY output) authentication required;
-
-    /***  start of addition
-
-    typedef string contigset_id;
-    typedef structure {
-        int contig_count;
-        int filtered_contig_count;
-    } FilterContigResults;
-
-    funcdef filter_contigs(string workspace_name, contigset_id contigset)
-            returns (FilterContigResults) authentication required;
-
-    end of addition   ***/
-
     /*
         The actual function is declared using 'funcdef' to specify the name
         and input/return arguments to the function.  For all typical KBase
-        Apps that run in the Narrative, your function should have the 
+        Apps that run in the Narrative, your function should have the
         'authentication required' modifier.
     */
-
-
     funcdef filter_contigs(FilterContigsParams params)
         returns (FilterContigsResults output) authentication required;
+
+    /**  start addition  **/
+
+    typedef string strType;
+    typedef int    intType;
+
+    typedef structure {
+        string   workspace_name;
+        strType  testStr;
+        int      testInt;
+    } TestParams;
+
+    typedef structure {
+        strType result_str;
+        intType result_length;
+    } testResult;
+
+    funcdef myStringFunc(TestParams test_params)
+        returns (testResult output) authentication required;
+
+    /**  end addition  **/
 
 };

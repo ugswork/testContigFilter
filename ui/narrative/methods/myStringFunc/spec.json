@@ -1,0 +1,73 @@
+{
+    "ver": "0.0.1",
+    "authors": [
+        "umaganapathyswork"
+    ],
+    "contact": "https://kbase.us/contact-us/",
+    "categories": ["active"],
+    "widgets": {
+        "input": null,
+        "output": "no-display"
+    },
+    "parameters": [ 
+        {
+            "id": "testStr",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "validate_as": "string"
+            }
+        },
+        {
+            "id": "testInt",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "validate_as": "int",
+                "min_integer" : 0
+            }
+        }
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name":"umaContigFilter",
+            "method": "myStringFunc",
+            "input_mapping": [
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_name"
+                },
+                {
+                    "input_parameter": "testStr",
+                    "target_property": "testStr"
+                },
+                {
+                    "input_parameter": "testInt",
+                    "target_property": "testInt"
+                }
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [0, "result_str"],
+                    "target_property": "result_str"
+                },
+                {
+                    "service_method_output_path": [0, "result_length"],
+                    "target_property": "result_length"
+                },
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_name"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}
