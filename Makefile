@@ -33,6 +33,7 @@ build:
 
 build-executable-script:
 	mkdir -p $(LBIN_DIR)
+	echo 'echo eeeeeeeeeeeeeeeeeeee in $(LBIN_DIR)/$(EXECUTABLE_SCRIPT_NAME)' > $(LBIN_DIR)/$(EXECUTABLE_SCRIPT_NAME)
 	echo '#!/bin/bash' > $(LBIN_DIR)/$(EXECUTABLE_SCRIPT_NAME)
 	echo 'script_dir=$$(dirname "$$(readlink -f "$$0")")' >> $(LBIN_DIR)/$(EXECUTABLE_SCRIPT_NAME)
 	echo 'export PYTHONPATH=$$script_dir/../$(LIB_DIR):$$PATH:$$PYTHONPATH' >> $(LBIN_DIR)/$(EXECUTABLE_SCRIPT_NAME)
@@ -42,6 +43,7 @@ build-executable-script:
 build-startup-script:
 	mkdir -p $(LBIN_DIR)
 	echo '#!/bin/bash' > $(SCRIPTS_DIR)/$(STARTUP_SCRIPT_NAME)
+	echo 'echo sssssssssssssssss  in $(SCRIPTS_DIR)/$(STARTUP_SCRIPT_NAME)' > $(SCRIPTS_DIR)/$(STARTUP_SCRIPT_NAME)
 	echo 'script_dir=$$(dirname "$$(readlink -f "$$0")")' >> $(SCRIPTS_DIR)/$(STARTUP_SCRIPT_NAME)
 	echo 'export KB_DEPLOYMENT_CONFIG=$$script_dir/../deploy.cfg' >> $(SCRIPTS_DIR)/$(STARTUP_SCRIPT_NAME)
 	echo 'export PYTHONPATH=$$script_dir/../$(LIB_DIR):$$PATH:$$PYTHONPATH' >> $(SCRIPTS_DIR)/$(STARTUP_SCRIPT_NAME)
@@ -50,6 +52,7 @@ build-startup-script:
 
 build-test-script:
 	echo '#!/bin/bash' > $(TEST_DIR)/$(TEST_SCRIPT_NAME)
+	echo 'echo ttttttttttttttttttttttttttt  In  $(TEST_DIR)/$(TEST_SCRIPT_NAME)' > $(TEST_DIR)/$(TEST_SCRIPT_NAME)
 	echo 'script_dir=$$(dirname "$$(readlink -f "$$0")")' >> $(TEST_DIR)/$(TEST_SCRIPT_NAME)
 	echo 'export KB_DEPLOYMENT_CONFIG=$$script_dir/../deploy.cfg' >> $(TEST_DIR)/$(TEST_SCRIPT_NAME)
 	echo 'export KB_AUTH_TOKEN=`cat /kb/module/work/token`' >> $(TEST_DIR)/$(TEST_SCRIPT_NAME)
@@ -60,6 +63,7 @@ build-test-script:
 
 test:
 	if [ ! -f /kb/module/work/token ]; then echo -e '\nOutside a docker container please run "kb-sdk test" rather than "make test"\n' && exit 1; fi
+	echo TTTTTTTTTTTTTTTTTTTT  $(TEST_DIR)/$(TEST_SCRIPT_NAME)
 	bash $(TEST_DIR)/$(TEST_SCRIPT_NAME)
 
 clean:

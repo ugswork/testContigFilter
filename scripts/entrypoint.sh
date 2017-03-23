@@ -9,17 +9,21 @@ if [ -f ./work/token ] ; then
 fi
 
 if [ $# -eq 0 ] ; then
+  echo "Start Server"
   sh ./scripts/start_server.sh
 elif [ "${1}" = "test" ] ; then
-  echo "Run Tests"
+  echo "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRun Tests"
   make test
 elif [ "${1}" = "async" ] ; then
+  echo "ASYNC"
   sh ./scripts/run_async.sh
 elif [ "${1}" = "init" ] ; then
   echo "Initialize module"
 elif [ "${1}" = "bash" ] ; then
+  echo "BASH"
   bash
 elif [ "${1}" = "report" ] ; then
+  echo "REPORT"
   export KB_SDK_COMPILE_REPORT_FILE=./work/compile_report.json
   make compile
 else

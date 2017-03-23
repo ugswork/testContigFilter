@@ -69,6 +69,7 @@ class umaContigFilterTest(unittest.TestCase):
         return wsName
 
     def getImpl(self):
+        print "IIIIIIIIIIIIIIIIIIIIIII" + str(self.__class__.serviceImpl)
         return self.__class__.serviceImpl
 
     def getContext(self):
@@ -88,6 +89,9 @@ class umaContigFilterTest(unittest.TestCase):
 
     # NOTE: According to Python unittest naming rules test method names should start from 'test'. # noqa
     def test_filter_contigs_ok(self):
+
+
+        print "My 11111111111111111111111  print"
 
         # First load a test FASTA file as an KBase Assembly
         fasta_content = '>seq1 something soemthing asdf\n' \
@@ -114,6 +118,9 @@ class umaContigFilterTest(unittest.TestCase):
         self.assertEqual(ret[0]['n_contigs_remaining'], 2)
 
     def test_filter_contigs_err1(self):
+
+        print "My 22222222222222222222  print"
+
         with self.assertRaises(ValueError) as errorContext:
             self.getImpl().filter_contigs(self.getContext(),
                                           {'workspace_name': self.getWsName(),
@@ -122,6 +129,9 @@ class umaContigFilterTest(unittest.TestCase):
         self.assertIn('min_length parameter cannot be negative', str(errorContext.exception))
 
     def test_filter_contigs_err2(self):
+
+        print "My 3333333333333333333  print"
+
         with self.assertRaises(ValueError) as errorContext:
             self.getImpl().filter_contigs(self.getContext(),
                                           {'workspace_name': self.getWsName(),
