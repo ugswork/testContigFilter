@@ -24,7 +24,8 @@ class umaContigFilterTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
 
-        $Id$
+        GIT_COMMIT_HASH = $(git rev-parse HEAD)
+        GIT_COMMIT_HASH2 = self.GIT_COMMIT_HASH
 
         token = environ.get('KB_AUTH_TOKEN', None)
         user_id = requests.post(
