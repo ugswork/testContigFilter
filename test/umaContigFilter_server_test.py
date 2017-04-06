@@ -23,6 +23,9 @@ class umaContigFilterTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+
+        $Id$
+
         token = environ.get('KB_AUTH_TOKEN', None)
         user_id = requests.post(
             'https://kbase.us/services/authorization/Sessions/Login',
