@@ -31,6 +31,9 @@ module umaContigFilter {
         assembly_ref assembly_input_ref;
         string workspace_name;
         int min_length;
+	int mink_arg;
+	int maxk_arg;
+	int step_arg;
     } FilterContigsParams;
 
 

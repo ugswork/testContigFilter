@@ -32,9 +32,56 @@
                 "validate_as": "int",
                 "min_integer" : 0
             }
+        },
+	{
+            "id": "mink_arg",
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "default_values": [ "20" ],
+            "field_type": "text",
+            "text_options": {
+                "validate_as" : "int",
+			          "min_int" : 1
+            }
+        },
+        {
+            "id": "maxk_arg",
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "default_values": [ "100" ],
+            "field_type": "text",
+            "text_options": {
+                "validate_as" : "int",
+			          "min_int" : 2
+            }
+        },
+        {
+            "id": "step_arg",
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "default_values": [ "20" ],
+            "field_type": "text",
+            "text_options": {
+                "validate_as" : "int",
+			          "min_int" : 1
+            }
         }
     ],
-    "behavior": {
+
+    "parameter-groups": [	
+	{
+		"id": "kmer_args",
+		"parameters": ["mink_arg", "maxk_arg", "step_arg"],
+	        "optional": true,
+		"allow_multiple": false,
+		"with_border": true
+	}
+    ],
+
+   "behavior": {
         "service-mapping": {
             "url": "",
             "name":"umaContigFilter",
@@ -52,6 +99,10 @@
                 {
                     "input_parameter": "min_length",
                     "target_property": "min_length"
+                },
+                {
+                    "input_parameter": "kmer_args",
+                    "target_property": "kmer_args"
                 }
             ],
             "output_mapping": [

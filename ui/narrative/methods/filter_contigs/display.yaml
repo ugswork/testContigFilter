@@ -38,6 +38,34 @@ parameters :
             Min Length Threshold
         short-hint : |
             All contigs below this length will be removed
+    mink_arg :
+        ui-name : |
+            Minimum k value
+        short-hint : |
+            Minimum k value (<=124)
+    maxk_arg :
+        ui-name : |
+            Maximum k value
+        short-hint : |
+            Maximum k value (<=124)
+    step_arg :
+        ui-name : |
+            Increment of k-mer
+        short-hint : |
+            Increment of k-mer for each iteration
+
+
+#
+# Configure the display and description of parameters
+#
+parameter-groups:
+        kmer_args :
+                ui-name : |
+                        k-mer options
+                short-hint : |
+                        Range and step for kmer
+
+
 description : |
     <p>This is a simple method designed to illustrate the KBase SDK.</p>
 
