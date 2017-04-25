@@ -103,12 +103,12 @@ This sample module contains one small method - filter_contigs.
             raise ValueError('min_length parameter cannot be negative (' + str(min_length) + ')')
 
 
-        if 'kmer_args' not in params:
+        if 'kmer_args' is not None:
             print("NNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOO  k-mer args")
         else:
             aargs = params['kmer_args']
             print("kkkkkkkkkkkkkmer args: " + str(aargs['mink_arg']) + " " +
-                                                  str(aargs['mink_arg']) + " " +
+                                                  str(aargs['maxk_arg']) + " " +
                                                       str(aargs['step_arg']))
 
         # Step 2 - Download the input data as a Fasta and
