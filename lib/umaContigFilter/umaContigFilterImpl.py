@@ -102,6 +102,14 @@ This sample module contains one small method - filter_contigs.
         if min_length < 0:
             raise ValueError('min_length parameter cannot be negative (' + str(min_length) + ')')
 
+
+        if 'mink_arg' not in params:
+            print("NNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOO  k-mer args")
+        else:
+            print("kkkkkkkkkkkkkmer args: " + str(params['mink_arg']) + " " +
+                                                  str(params['mink_arg']) + " " +
+                                                      str(params['step_arg']))
+
         # Step 2 - Download the input data as a Fasta and
         # We can use the AssemblyUtils module to download a FASTA file from our Assembly data object.
         # The return object gives us the path to the file that was created.
