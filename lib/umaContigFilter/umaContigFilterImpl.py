@@ -103,7 +103,7 @@ This sample module contains one small method - filter_contigs.
             raise ValueError('min_length parameter cannot be negative (' + str(min_length) + ')')
 
 
-        if params['kmer_args'] is not None:
+        if params['kmer_args'] is None:
             print("NNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOO  k-mer args")
         else:
             aargs = params['kmer_args']
