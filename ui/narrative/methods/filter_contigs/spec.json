@@ -23,8 +23,8 @@
         },
         {
             "id": "min_length",
-            "optional": false,
-            "advanced": false,
+            "optional": true,
+            "advanced": true,
             "allow_multiple": false,
             "default_values": [ "" ],
             "field_type": "text",
@@ -42,7 +42,8 @@
             "field_type": "text",
             "text_options": {
                 "validate_as" : "int",
-			          "min_int" : 1
+	        "min_int" : 1,
+		"max_int" : 124
             }
         },
         {
@@ -54,7 +55,8 @@
             "field_type": "text",
             "text_options": {
                 "validate_as" : "int",
-			          "min_int" : 2
+                "min_int" : 2,
+		"max_int" : 124
             }
         },
         {
@@ -66,7 +68,7 @@
             "field_type": "text",
             "text_options": {
                 "validate_as" : "int",
-			          "min_int" : 1
+		"min_int" : 1
             }
         }
     ],
@@ -75,7 +77,8 @@
 	{
 		"id": "kmer_args",
 		"parameters": ["mink_arg", "maxk_arg", "step_arg"],
-	        "optional": true,
+                "optional": true,
+	        "advanced": true,
 		"allow_multiple": false,
 		"with_border": true
 	}
