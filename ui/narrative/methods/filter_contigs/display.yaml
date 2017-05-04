@@ -53,6 +53,11 @@ parameters :
             Increment of k-mer
         short-hint : |
             Increment of k-mer for each iteration
+    extra_params :
+        ui-name : |
+            Advanced assembly parameters
+        short-hint : |
+            Enter extra assembly parameters as strings
 
 
 #

@@ -110,6 +110,11 @@ This sample module contains one small method - filter_contigs.
             print("kkkkkkkkkkkkkmer args: " + str(aargs['mink_arg']) + " " +
                                                   str(aargs['maxk_arg']) + " " +
                                                       str(aargs['step_arg']))
+        if params['extra_params'] is None:
+            print("EEEEEEEEEEEEEEEEEEEEEEEEEEE  extra params")
+        else:
+            for ep in params['extra_params']:
+                print("EEXTTTTTTRAAA param: = " + ep)
 
         # Step 2 - Download the input data as a Fasta and
         # We can use the AssemblyUtils module to download a FASTA file from our Assembly data object.

@@ -27,13 +27,19 @@ module umaContigFilter {
             list <string> list_of_strings;
             mapping <string, int> map_of_ints;
     */
+
+    typedef structure {
+        int mink_arg;                  /*  (=20)  minimum k value (<=124) */
+        int maxk_arg;                  /*  (=100)  maximum k value (<=124) */
+        int step_arg;                  /*  (=20)  increment of k-mer of each iteration  */
+    } kmer_args_type;
+
     typedef structure {
         assembly_ref assembly_input_ref;
         string workspace_name;
         int min_length;
-	int mink_arg;
-	int maxk_arg;
-	int step_arg;
+	    kmer_args_type kmer_args;
+	    list<string> extra_params;
     } FilterContigsParams;
 
 

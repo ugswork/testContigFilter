@@ -70,6 +70,15 @@
                 "validate_as" : "int",
 		"min_int" : 1
             }
+        },
+        {
+            "id" : "extra_params",
+            "optional" : true,
+            "advanced" : true,
+            "allow_multiple" : true,
+            "default_values" : [ "" ],
+            "field_type" : "text",
+            "text_options" : { }
         }
     ],
 
@@ -106,6 +115,10 @@
                 {
                     "input_parameter": "kmer_args",
                     "target_property": "kmer_args"
+                },
+                {
+                    "input_parameter": "extra_params",
+                    "target_property": "extra_params"
                 }
             ],
             "output_mapping": [
