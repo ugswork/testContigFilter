@@ -20,8 +20,8 @@ This sample module contains one small method - filter_contigs.
     # the latter method is running.
     ######################################### noqa
     VERSION = "0.0.1"
-    GIT_URL = "https://github.com/uganapathy/umaContigFilter.git"
-    GIT_COMMIT_HASH = "1dbe433ebc3c516b99cbf5c8219fad635b15ac1c"
+    GIT_URL = "https://github.com/ugswork/umaContigFilter.git"
+    GIT_COMMIT_HASH = "df8bc7f3961f7eedb5d6530368b956612300e63b"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -40,7 +40,14 @@ This sample module contains one small method - filter_contigs.
         and input/return arguments to the function.  For all typical KBase
         Apps that run in the Narrative, your function should have the
         'authentication required' modifier.
-        :param params: instance of type "FilterContigsParams" (A 'typedef'
+        :param params: instance of type "FilterContigsParams" -> structure:
+           parameter "assembly_input_ref" of type "assembly_ref" (A 'typedef'
+           allows you to provide a more specific name for a type.  Built-in
+           primitive types include 'string', 'int', 'float'.  Here we define
+           a type named assembly_ref to indicate a string that should be set
+           to a KBase ID reference to an Assembly data object.), parameter
+           "workspace_name" of String, parameter "min_length" of Long,
+           parameter "libfile_args" of type "libfile_args_type" (A 'typedef'
            can also be used to define compound or container objects, like
            lists, maps, and structures.  The standard KBase convention is to
            use structures, as shown here, to define the input and output of
@@ -49,13 +56,9 @@ This sample module contains one small method - filter_contigs.
            filtering. To define lists and maps, use a syntax similar to C++
            templates to indicate the type contained in the list or map.  For
            example: list <string> list_of_strings; mapping <string, int>
-           map_of_ints;) -> structure: parameter "assembly_input_ref" of type
-           "assembly_ref" (A 'typedef' allows you to provide a more specific
-           name for a type.  Built-in primitive types include 'string',
-           'int', 'float'.  Here we define a type named assembly_ref to
-           indicate a string that should be set to a KBase ID reference to an
-           Assembly data object.), parameter "workspace_name" of String,
-           parameter "min_length" of Long
+           map_of_ints;) -> structure: parameter "libfile_input_lib" of Long,
+           parameter "libfile_input_insert" of Long, parameter "extra_params"
+           of list of String
         :returns: instance of type "FilterContigsResults" (Here is the
            definition of the output of the function.  The output can be used
            by other SDK modules which call your code, or the output

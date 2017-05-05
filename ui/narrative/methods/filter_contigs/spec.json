@@ -33,64 +33,41 @@
                 "min_integer" : 0
             }
         },
-	{
-            "id": "mink_arg",
-            "optional": false,
+        {
+            "id": "libfile_input_lib",
+            "optional": true,
             "advanced": true,
             "allow_multiple": false,
-            "default_values": [ "20" ],
+            "default_values": [ "" ],
             "field_type": "text",
             "text_options": {
-                "validate_as" : "int",
-	        "min_int" : 1,
-		"max_int" : 124
+                "valid_ws_types": ["KBaseFile.PairedEndLibrary", "KBaseAssembly.PairedEndLibrary", "KBaseFile.SingleEndLibrary", "KBaseAssembly.SingleEndLibrary"]
             }
         },
         {
-            "id": "maxk_arg",
-            "optional": false,
+            "id": "libfile_input_insert",
+            "optional": true,
             "advanced": true,
             "allow_multiple": false,
             "default_values": [ "100" ],
             "field_type": "text",
             "text_options": {
                 "validate_as" : "int",
-                "min_int" : 2,
-		"max_int" : 124
+                "min_int" : 1
             }
-        },
-        {
-            "id": "step_arg",
-            "optional": false,
-            "advanced": true,
-            "allow_multiple": false,
-            "default_values": [ "20" ],
-            "field_type": "text",
-            "text_options": {
-                "validate_as" : "int",
-		"min_int" : 1
-            }
-        },
-        {
-            "id" : "extra_params",
-            "optional" : true,
-            "advanced" : true,
-            "allow_multiple" : true,
-            "default_values" : [ "" ],
-            "field_type" : "text",
-            "text_options" : { }
         }
+
     ],
 
     "parameter-groups": [	
-	{
-		"id": "kmer_args",
-		"parameters": ["mink_arg", "maxk_arg", "step_arg"],
-                "optional": true,
+	    {
+		    "id": "libfile_args",
+		    "parameters": ["libfile_input_lib", "libfile_input_insert"],
+            "optional": true,
 	        "advanced": true,
-		"allow_multiple": true,
-		"with_border": true
-	}
+		    "allow_multiple": true,
+		    "with_border": true
+	    }
     ],
 
    "behavior": {
@@ -113,12 +90,8 @@
                     "target_property": "min_length"
                 },
                 {
-                    "input_parameter": "kmer_args",
-                    "target_property": "kmer_args"
-                },
-                {
-                    "input_parameter": "extra_params",
-                    "target_property": "extra_params"
+                    "input_parameter": "libfile_args",
+                    "target_property": "libfile_args"
                 }
             ],
             "output_mapping": [

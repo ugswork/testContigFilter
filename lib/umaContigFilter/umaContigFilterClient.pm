@@ -82,20 +82,19 @@ sub new
     # We create an auth token, passing through the arguments that we were (hopefully) given.
 
     {
-	my $token = Bio::KBase::AuthToken->new(@args);
-	
-	if (!$token->error_message)
-	{
-	    $self->{token} = $token->token;
-	    $self->{client}->{token} = $token->token;
+	my %arg_hash2 = @args;
+	if (exists $arg_hash2{"token"}) {
+	    $self->{token} = $arg_hash2{"token"};
+	} elsif (exists $arg_hash2{"user_id"}) {
+	    my $token = Bio::KBase::AuthToken->new(@args);
+	    if (!$token->error_message) {
+	        $self->{token} = $token->token;
+	    }
 	}
-        else
-        {
-	    #
-	    # All methods in this module require authentication. In this case, if we
-	    # don't have a token, we can't continue.
-	    #
-	    die "Authentication failed: " . $token->error_message;
+	
+	if (exists $self->{token})
+	{
+	    $self->{client}->{token} = $self->{token};
 	}
     }
 
@@ -127,7 +126,12 @@ FilterContigsParams is a reference to a hash where the following keys are define
 	assembly_input_ref has a value which is an umaContigFilter.assembly_ref
 	workspace_name has a value which is a string
 	min_length has a value which is an int
+	libfile_args has a value which is an umaContigFilter.libfile_args_type
+	extra_params has a value which is a reference to a list where each element is a string
 assembly_ref is a string
+libfile_args_type is a reference to a hash where the following keys are defined:
+	libfile_input_lib has a value which is an int
+	libfile_input_insert has a value which is an int
 FilterContigsResults is a reference to a hash where the following keys are defined:
 	report_name has a value which is a string
 	report_ref has a value which is a string
@@ -148,7 +152,12 @@ FilterContigsParams is a reference to a hash where the following keys are define
 	assembly_input_ref has a value which is an umaContigFilter.assembly_ref
 	workspace_name has a value which is a string
 	min_length has a value which is an int
+	libfile_args has a value which is an umaContigFilter.libfile_args_type
+	extra_params has a value which is a reference to a list where each element is a string
 assembly_ref is a string
+libfile_args_type is a reference to a hash where the following keys are defined:
+	libfile_input_lib has a value which is an int
+	libfile_input_insert has a value which is an int
 FilterContigsResults is a reference to a hash where the following keys are defined:
 	report_name has a value which is a string
 	report_ref has a value which is a string
@@ -441,7 +450,7 @@ a string
 
 
 
-=head2 FilterContigsParams
+=head2 libfile_args_type
 
 =over 4
 
@@ -469,9 +478,43 @@ to indicate the type contained in the list or map.  For example:
 
 <pre>
 a reference to a hash where the following keys are defined:
+libfile_input_lib has a value which is an int
+libfile_input_insert has a value which is an int
+
+</pre>
+
+=end html
+
+=begin text
+
+a reference to a hash where the following keys are defined:
+libfile_input_lib has a value which is an int
+libfile_input_insert has a value which is an int
+
+
+=end text
+
+=back
+
+
+
+=head2 FilterContigsParams
+
+=over 4
+
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a reference to a hash where the following keys are defined:
 assembly_input_ref has a value which is an umaContigFilter.assembly_ref
 workspace_name has a value which is a string
 min_length has a value which is an int
+libfile_args has a value which is an umaContigFilter.libfile_args_type
+extra_params has a value which is a reference to a list where each element is a string
 
 </pre>
 
@@ -483,6 +526,8 @@ a reference to a hash where the following keys are defined:
 assembly_input_ref has a value which is an umaContigFilter.assembly_ref
 workspace_name has a value which is a string
 min_length has a value which is an int
+libfile_args has a value which is an umaContigFilter.libfile_args_type
+extra_params has a value which is a reference to a list where each element is a string
 
 
 =end text

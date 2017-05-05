@@ -23,7 +23,6 @@ suggestions:
         next:
             [annotate_contigset]
 
-
 #
 # Configure the display and description of parameters
 #
@@ -38,21 +37,16 @@ parameters :
             Min Length Threshold
         short-hint : |
             All contigs below this length will be removed
-    mink_arg :
+    libfile_input_lib :
         ui-name : |
-            Minimum k value
+            libfile library
         short-hint : |
-            Minimum k value (<=124)
-    maxk_arg :
+            single or paired
+    libfile_input_insert :
         ui-name : |
-            Maximum k value
+            Insert value
         short-hint : |
-            Maximum k value (<=124)
-    step_arg :
-        ui-name : |
-            Increment of k-mer
-        short-hint : |
-            Increment of k-mer for each iteration
+            Insert value
     extra_params :
         ui-name : |
             Advanced assembly parameters
@@ -64,11 +58,11 @@ parameters :
 # Configure the display and description of parameters
 #
 parameter-groups:
-        kmer_args :
+        libfile_args :
                 ui-name : |
-                        k-mer options
+                        libfile options
                 short-hint : |
-                        Range and step for kmer
+                        lib file and insert value
 
 
 description : |
