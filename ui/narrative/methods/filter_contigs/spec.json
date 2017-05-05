@@ -88,7 +88,7 @@
 		"parameters": ["mink_arg", "maxk_arg", "step_arg"],
                 "optional": true,
 	        "advanced": true,
-		"allow_multiple": false,
+		"allow_multiple": true,
 		"with_border": true
 	}
     ],
