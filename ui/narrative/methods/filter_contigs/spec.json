@@ -45,6 +45,17 @@
             }
         },
         {
+            "id": "libfile_input_unpaired",
+            "optional": true,
+            "advanced": true,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": ["KBaseFile.SingleEndLibrary", "KBaseAssembly.SingleEndLibrary"]
+            }
+        },
+        {
             "id": "libfile_input_insert",
             "optional": true,
             "advanced": true,
@@ -62,7 +73,7 @@
     "parameter-groups": [	
 	    {
 		    "id": "libfile_args",
-		    "parameters": ["libfile_input_lib", "libfile_input_insert"],
+		    "parameters": ["libfile_input_lib", "libfile_input_unpaired", "libfile_input_insert"],
             "optional": true,
 	        "advanced": true,
 		    "allow_multiple": true,

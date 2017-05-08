@@ -42,6 +42,11 @@ parameters :
             libfile library
         short-hint : |
             single or paired
+    libfile_input_unpaired :
+        ui-name : |
+            libfile unpaired
+        short-hint : |
+            single
     libfile_input_insert :
         ui-name : |
             Insert value
