@@ -32,7 +32,50 @@
                 "validate_as": "int",
                 "min_integer" : 0
             }
+        },
+        {
+            "id": "libfile_library",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": ["KBaseAssembly.PairedEndLibrary","KBaseFile.PairedEndLibrary"]
+            }
+        },
+        {
+            "id": "libfile_unpaired",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": ["KBaseAssembly.PairedEndLibrary","KBaseFile.PairedEndLibrary"]
+            }
+        },
+        {
+            "id": "libfile_insert",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "validate_as": "int",
+                "min_integer" : 0
+            }
         }
+    ],
+    "parameter-groups": [
+	    {
+	      "id": "reads",
+	      "parameters": ["libfile_library","libfile_unpaired","libfile_insert"],
+	      "optional": true,
+	      "allow_multiple": true,
+	      "with_border": true
+	    }
     ],
     "behavior": {
         "service-mapping": {

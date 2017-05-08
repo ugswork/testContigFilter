@@ -37,5 +37,27 @@ parameters :
             IntParameter
         short-hint : |
             Any integer
+    libfile_library :
+        ui-name : |
+            libfile library
+        short-hint : |
+            single or paired
+    libfile_unpaired :
+        ui-name : |
+            libfile unpaired
+        short-hint : |
+            single
+    libfile_insert :
+        ui-name : |
+            Insert value
+        short-hint : |
+            Insert value
+
+parameter-groups :
+    reads :
+        ui-name : Reads
+        short-hint : |
+            Reads objects and options to use in the assembly.
+
 description : |
     <p>This is a simple method designed to illustrate the KBase SDK.</p>

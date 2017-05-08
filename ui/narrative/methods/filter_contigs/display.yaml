@@ -52,22 +52,17 @@ parameters :
             Insert value
         short-hint : |
             Insert value
-    extra_params :
-        ui-name : |
-            Advanced assembly parameters
-        short-hint : |
-            Enter extra assembly parameters as strings
 
 
 #
 # Configure the display and description of parameters
 #
 parameter-groups:
-        libfile_args :
-                ui-name : |
-                        libfile options
-                short-hint : |
-                        lib file and insert value
+    libfile_args :
+        ui-name : |
+            libfile options
+        short-hint : |
+            lib file and insert value
 
 
 description : |

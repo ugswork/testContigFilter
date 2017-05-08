@@ -34,24 +34,8 @@ public class FilterContigsParams {
     private java.lang.String workspaceName;
     @JsonProperty("min_length")
     private Long minLength;
-    /**
-     * <p>Original spec-file type: libfile_args_type</p>
-     * <pre>
-     * A 'typedef' can also be used to define compound or container
-     * objects, like lists, maps, and structures.  The standard KBase
-     * convention is to use structures, as shown here, to define the
-     * input and output of your function.  Here the input is a
-     * reference to the Assembly data object, a workspace to save
-     * output, and a length threshold for filtering.
-     * To define lists and maps, use a syntax similar to C++ templates
-     * to indicate the type contained in the list or map.  For example:
-     *     list <string> list_of_strings;
-     *     mapping <string, int> map_of_ints;
-     * </pre>
-     * 
-     */
     @JsonProperty("libfile_args")
-    private LibfileArgsType libfileArgs;
+    private List<LibfileArgsType> libfileArgs;
     @JsonProperty("extra_params")
     private List<String> extraParams;
     private Map<java.lang.String, Object> additionalProperties = new HashMap<java.lang.String, Object>();
@@ -101,49 +85,17 @@ public class FilterContigsParams {
         return this;
     }
 
-    /**
-     * <p>Original spec-file type: libfile_args_type</p>
-     * <pre>
-     * A 'typedef' can also be used to define compound or container
-     * objects, like lists, maps, and structures.  The standard KBase
-     * convention is to use structures, as shown here, to define the
-     * input and output of your function.  Here the input is a
-     * reference to the Assembly data object, a workspace to save
-     * output, and a length threshold for filtering.
-     * To define lists and maps, use a syntax similar to C++ templates
-     * to indicate the type contained in the list or map.  For example:
-     *     list <string> list_of_strings;
-     *     mapping <string, int> map_of_ints;
-     * </pre>
-     * 
-     */
     @JsonProperty("libfile_args")
-    public LibfileArgsType getLibfileArgs() {
+    public List<LibfileArgsType> getLibfileArgs() {
         return libfileArgs;
     }
 
-    /**
-     * <p>Original spec-file type: libfile_args_type</p>
-     * <pre>
-     * A 'typedef' can also be used to define compound or container
-     * objects, like lists, maps, and structures.  The standard KBase
-     * convention is to use structures, as shown here, to define the
-     * input and output of your function.  Here the input is a
-     * reference to the Assembly data object, a workspace to save
-     * output, and a length threshold for filtering.
-     * To define lists and maps, use a syntax similar to C++ templates
-     * to indicate the type contained in the list or map.  For example:
-     *     list <string> list_of_strings;
-     *     mapping <string, int> map_of_ints;
-     * </pre>
-     * 
-     */
     @JsonProperty("libfile_args")
-    public void setLibfileArgs(LibfileArgsType libfileArgs) {
+    public void setLibfileArgs(List<LibfileArgsType> libfileArgs) {
         this.libfileArgs = libfileArgs;
     }
 
-    public FilterContigsParams withLibfileArgs(LibfileArgsType libfileArgs) {
+    public FilterContigsParams withLibfileArgs(List<LibfileArgsType> libfileArgs) {
         this.libfileArgs = libfileArgs;
         return this;
     }

@@ -30,6 +30,7 @@ module umaContigFilter {
 
     typedef structure {
         int libfile_input_lib;                  /*  (=20)  minimum k value (<=124) */
+        int libfile_input_unpaired;                  /*  (=20)  minimum k value (<=124) */
         int libfile_input_insert;                  /*  (=20)  increment of k-mer of each iteration  */
     } libfile_args_type;
 
@@ -37,7 +38,7 @@ module umaContigFilter {
         assembly_ref assembly_input_ref;
         string workspace_name;
         int min_length;
-	    libfile_args_type libfile_args;
+	    list<libfile_args_type> libfile_args;
 	    list<string> extra_params;
     } FilterContigsParams;
 
