@@ -56,9 +56,8 @@ class umaContigFilter(object):
            syntax similar to C++ templates to indicate the type contained in
            the list or map.  For example: list <string> list_of_strings;
            mapping <string, int> map_of_ints;) -> structure: parameter
-           "libfile_input_lib" of Long, parameter "libfile_input_unpaired" of
-           Long, parameter "libfile_input_insert" of Long, parameter
-           "extra_params" of list of String
+           "libfile_librry" of String, parameter "libfile_unpaired" of
+           String, parameter "libfile_insert" of Long
         :returns: instance of type "FilterContigsResults" (Here is the
            definition of the output of the function.  The output can be used
            by other SDK modules which call your code, or the output

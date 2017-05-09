@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 #BEGIN_HEADER
+from pprint import pprint
 #END_HEADER
 
 
@@ -21,7 +22,7 @@ This sample module contains one small method - filter_contigs.
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/ugswork/umaContigFilter.git"
-    GIT_COMMIT_HASH = "db14ada6fdde186b6cad710bfc4b69e14950a78e"
+    GIT_COMMIT_HASH = "bb4f2646aa6c8ac8fe66d56e5bce83ad362e382c"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -57,9 +58,8 @@ This sample module contains one small method - filter_contigs.
            syntax similar to C++ templates to indicate the type contained in
            the list or map.  For example: list <string> list_of_strings;
            mapping <string, int> map_of_ints;) -> structure: parameter
-           "libfile_input_lib" of Long, parameter "libfile_input_unpaired" of
-           Long, parameter "libfile_input_insert" of Long, parameter
-           "extra_params" of list of String
+           "libfile_librry" of String, parameter "libfile_unpaired" of
+           String, parameter "libfile_insert" of Long
         :returns: instance of type "FilterContigsResults" (Here is the
            definition of the output of the function.  The output can be used
            by other SDK modules which call your code, or the output
@@ -81,7 +81,8 @@ This sample module contains one small method - filter_contigs.
 
         # Print statements to stdout/stderr are captured and available as the App log
         print('Starting Filter Contigs function. Params=')
-        print(params)
+        pprint(params)
+        print('========================================')
 
         # Step 1 - Parse/examine the parameters and catch any errors
         # It is important to check that parameters exist and are defined, and that nice error

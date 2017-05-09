@@ -23,49 +23,46 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "assembly_input_ref",
     "workspace_name",
     "min_length",
-    "libfile_args",
-    "extra_params"
+    "libfile_args"
 })
 public class FilterContigsParams {
 
     @JsonProperty("assembly_input_ref")
-    private java.lang.String assemblyInputRef;
+    private String assemblyInputRef;
     @JsonProperty("workspace_name")
-    private java.lang.String workspaceName;
+    private String workspaceName;
     @JsonProperty("min_length")
     private Long minLength;
     @JsonProperty("libfile_args")
     private List<LibfileArgsType> libfileArgs;
-    @JsonProperty("extra_params")
-    private List<String> extraParams;
-    private Map<java.lang.String, Object> additionalProperties = new HashMap<java.lang.String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("assembly_input_ref")
-    public java.lang.String getAssemblyInputRef() {
+    public String getAssemblyInputRef() {
         return assemblyInputRef;
     }
 
     @JsonProperty("assembly_input_ref")
-    public void setAssemblyInputRef(java.lang.String assemblyInputRef) {
+    public void setAssemblyInputRef(String assemblyInputRef) {
         this.assemblyInputRef = assemblyInputRef;
     }
 
-    public FilterContigsParams withAssemblyInputRef(java.lang.String assemblyInputRef) {
+    public FilterContigsParams withAssemblyInputRef(String assemblyInputRef) {
         this.assemblyInputRef = assemblyInputRef;
         return this;
     }
 
     @JsonProperty("workspace_name")
-    public java.lang.String getWorkspaceName() {
+    public String getWorkspaceName() {
         return workspaceName;
     }
 
     @JsonProperty("workspace_name")
-    public void setWorkspaceName(java.lang.String workspaceName) {
+    public void setWorkspaceName(String workspaceName) {
         this.workspaceName = workspaceName;
     }
 
-    public FilterContigsParams withWorkspaceName(java.lang.String workspaceName) {
+    public FilterContigsParams withWorkspaceName(String workspaceName) {
         this.workspaceName = workspaceName;
         return this;
     }
@@ -100,34 +97,19 @@ public class FilterContigsParams {
         return this;
     }
 
-    @JsonProperty("extra_params")
-    public List<String> getExtraParams() {
-        return extraParams;
-    }
-
-    @JsonProperty("extra_params")
-    public void setExtraParams(List<String> extraParams) {
-        this.extraParams = extraParams;
-    }
-
-    public FilterContigsParams withExtraParams(List<String> extraParams) {
-        this.extraParams = extraParams;
-        return this;
-    }
-
     @JsonAnyGetter
-    public Map<java.lang.String, Object> getAdditionalProperties() {
+    public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
     @JsonAnySetter
-    public void setAdditionalProperties(java.lang.String name, Object value) {
+    public void setAdditionalProperties(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
 
     @Override
-    public java.lang.String toString() {
-        return ((((((((((((("FilterContigsParams"+" [assemblyInputRef=")+ assemblyInputRef)+", workspaceName=")+ workspaceName)+", minLength=")+ minLength)+", libfileArgs=")+ libfileArgs)+", extraParams=")+ extraParams)+", additionalProperties=")+ additionalProperties)+"]");
+    public String toString() {
+        return ((((((((((("FilterContigsParams"+" [assemblyInputRef=")+ assemblyInputRef)+", workspaceName=")+ workspaceName)+", minLength=")+ minLength)+", libfileArgs=")+ libfileArgs)+", additionalProperties=")+ additionalProperties)+"]");
     }
 
 }

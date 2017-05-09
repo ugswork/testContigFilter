@@ -29,9 +29,9 @@ module umaContigFilter {
     */
 
     typedef structure {
-        int libfile_input_lib;                  /*  (=20)  minimum k value (<=124) */
-        int libfile_input_unpaired;                  /*  (=20)  minimum k value (<=124) */
-        int libfile_input_insert;                  /*  (=20)  increment of k-mer of each iteration  */
+        string libfile_librry;                  /*  (=20)  minimum k value (<=124) */
+        string libfile_unpaired;                  /*  (=20)  minimum k value (<=124) */
+        int    libfile_insert;                  /*  (=20)  increment of k-mer of each iteration  */
     } libfile_args_type;
 
     typedef structure {
@@ -39,8 +39,7 @@ module umaContigFilter {
         string workspace_name;
         int min_length;
 	    list<libfile_args_type> libfile_args;
-	    list<string> extra_params;
-    } FilterContigsParams;
+	} FilterContigsParams;
 
 
     /*

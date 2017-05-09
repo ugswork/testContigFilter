@@ -34,7 +34,7 @@
             }
         },
         {
-            "id": "libfile_input_lib",
+            "id": "libfile_library",
             "optional": false,
             "advanced": false,
             "allow_multiple": false,
@@ -45,7 +45,7 @@
             }
         },
         {
-            "id": "libfile_input_unpaired",
+            "id": "libfile_unpaired",
             "optional": true,
             "advanced": true,
             "allow_multiple": false,
@@ -56,7 +56,7 @@
             }
         },
         {
-            "id": "libfile_input_insert",
+            "id": "libfile_insert",
             "optional": true,
             "advanced": true,
             "allow_multiple": false,
@@ -72,7 +72,7 @@
     "parameter-groups": [	
 	    {
 		    "id": "libfile_args",
-		    "parameters": ["libfile_input_lib", "libfile_input_unpaired", "libfile_input_insert"],
+		    "parameters": ["libfile_library", "libfile_unpaired", "libfile_insert"],
             "optional": true,
 	        "advanced": true,
 		    "allow_multiple": true,

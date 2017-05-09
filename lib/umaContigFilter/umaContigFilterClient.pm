@@ -127,12 +127,11 @@ FilterContigsParams is a reference to a hash where the following keys are define
 	workspace_name has a value which is a string
 	min_length has a value which is an int
 	libfile_args has a value which is a reference to a list where each element is an umaContigFilter.libfile_args_type
-	extra_params has a value which is a reference to a list where each element is a string
 assembly_ref is a string
 libfile_args_type is a reference to a hash where the following keys are defined:
-	libfile_input_lib has a value which is an int
-	libfile_input_unpaired has a value which is an int
-	libfile_input_insert has a value which is an int
+	libfile_librry has a value which is a string
+	libfile_unpaired has a value which is a string
+	libfile_insert has a value which is an int
 FilterContigsResults is a reference to a hash where the following keys are defined:
 	report_name has a value which is a string
 	report_ref has a value which is a string
@@ -154,12 +153,11 @@ FilterContigsParams is a reference to a hash where the following keys are define
 	workspace_name has a value which is a string
 	min_length has a value which is an int
 	libfile_args has a value which is a reference to a list where each element is an umaContigFilter.libfile_args_type
-	extra_params has a value which is a reference to a list where each element is a string
 assembly_ref is a string
 libfile_args_type is a reference to a hash where the following keys are defined:
-	libfile_input_lib has a value which is an int
-	libfile_input_unpaired has a value which is an int
-	libfile_input_insert has a value which is an int
+	libfile_librry has a value which is a string
+	libfile_unpaired has a value which is a string
+	libfile_insert has a value which is an int
 FilterContigsResults is a reference to a hash where the following keys are defined:
 	report_name has a value which is a string
 	report_ref has a value which is a string
@@ -480,9 +478,9 @@ to indicate the type contained in the list or map.  For example:
 
 <pre>
 a reference to a hash where the following keys are defined:
-libfile_input_lib has a value which is an int
-libfile_input_unpaired has a value which is an int
-libfile_input_insert has a value which is an int
+libfile_librry has a value which is a string
+libfile_unpaired has a value which is a string
+libfile_insert has a value which is an int
 
 </pre>
 
@@ -491,9 +489,9 @@ libfile_input_insert has a value which is an int
 =begin text
 
 a reference to a hash where the following keys are defined:
-libfile_input_lib has a value which is an int
-libfile_input_unpaired has a value which is an int
-libfile_input_insert has a value which is an int
+libfile_librry has a value which is a string
+libfile_unpaired has a value which is a string
+libfile_insert has a value which is an int
 
 
 =end text
@@ -518,7 +516,6 @@ assembly_input_ref has a value which is an umaContigFilter.assembly_ref
 workspace_name has a value which is a string
 min_length has a value which is an int
 libfile_args has a value which is a reference to a list where each element is an umaContigFilter.libfile_args_type
-extra_params has a value which is a reference to a list where each element is a string
 
 </pre>
 
@@ -531,7 +528,6 @@ assembly_input_ref has a value which is an umaContigFilter.assembly_ref
 workspace_name has a value which is a string
 min_length has a value which is an int
 libfile_args has a value which is a reference to a list where each element is an umaContigFilter.libfile_args_type
-extra_params has a value which is a reference to a list where each element is a string
 
 
 =end text

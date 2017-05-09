@@ -37,17 +37,17 @@ parameters :
             Min Length Threshold
         short-hint : |
             All contigs below this length will be removed
-    libfile_input_lib :
+    libfile_library :
         ui-name : |
-            libfile library
+            Reads library
         short-hint : |
             single or paired
-    libfile_input_unpaired :
+    libfile_unpaired :
         ui-name : |
-            libfile unpaired
+            Reads Unpaired
         short-hint : |
             single
-    libfile_input_insert :
+    libfile_insert :
         ui-name : |
             Insert value
         short-hint : |
