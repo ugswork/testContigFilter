@@ -219,7 +219,7 @@ This sample module contains one small method - filter_contigs.
 
         if 'metagenome' in test_params and test_params['metagenome']:
             print "MMMMMMMETAgenome selected"
-        else
+        else:
             print "MMMMMMMETAgenome NNNNNNNNNNNot selected"
 
         resultStr = testStr + str(testInt) + str(testInt)
