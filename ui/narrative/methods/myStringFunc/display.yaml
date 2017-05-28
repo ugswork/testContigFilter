@@ -52,6 +52,11 @@ parameters :
             Insert value
         short-hint : |
             Insert value
+    metagenome :
+        ui-name : |
+            metagenome
+        short-hint : |
+            metagenome
 
 parameter-groups :
     reads :
