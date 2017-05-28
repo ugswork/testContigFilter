@@ -217,7 +217,7 @@ This sample module contains one small method - filter_contigs.
         if testInt < 0:
             raise ValueError('testInt parameter cannot be negative (' + str(testInt) + ')')
 
-        if 'metagenome' in test_params and test_params['metagenome'] == 1:
+        if 'metagenome' in test_params and test_params['metagenome']:
             print "MMMMMMMETAgenome selected"
         else
             print "MMMMMMMETAgenome NNNNNNNNNNNot selected"
