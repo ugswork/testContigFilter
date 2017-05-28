@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #BEGIN_HEADER
-from kb_ea_utils.kb_ea_utilsClient import kb_ea_utils
+#from kb_ea_utils.kb_ea_utilsClient import kb_ea_utils
 from pprint import pprint
 #END_HEADER
 
@@ -133,7 +133,7 @@ This sample module contains one small method - filter_contigs.
         assemblyUtil = AssemblyUtil(self.callback_url)
         fasta_file = assemblyUtil.get_assembly_as_fasta({'ref': assembly_input_ref})
 
-        kbEAUtils = kb_ea_utils(self.callback_url, token=ctx['token'])
+        #kbEAUtils = kb_ea_utils(self.callback_url, token=ctx['token'])
 
         # Step 3 - Actually perform the filter operation, saving the good contigs to a new fasta file.
         # We can use BioPython to parse the Fasta file and build and save the output to a file.
