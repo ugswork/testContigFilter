@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 #BEGIN_HEADER
+from kb_ea_utils.kb_ea_utilsClient import kb_ea_utils
 from pprint import pprint
 #END_HEADER
 
@@ -31,6 +32,7 @@ This sample module contains one small method - filter_contigs.
     # be found
     def __init__(self, config):
         #BEGIN_CONSTRUCTOR
+        self.callback_url = os.environ['SDK_CALLBACK_URL']
         #END_CONSTRUCTOR
         pass
 
@@ -108,6 +110,7 @@ This sample module contains one small method - filter_contigs.
             raise ValueError('min_length parameter cannot be negative (' + str(min_length) + ')')
 
 
+        '''
         if params['kmer_args'] is None:
             print("NNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOO  k-mer args")
         else:
@@ -120,6 +123,8 @@ This sample module contains one small method - filter_contigs.
         else:
             for ep in params['extra_params']:
                 print("EEXTTTTTTRAAA param: = " + ep)
+        '''
+
 
         # Step 2 - Download the input data as a Fasta and
         # We can use the AssemblyUtils module to download a FASTA file from our Assembly data object.
@@ -127,6 +132,8 @@ This sample module contains one small method - filter_contigs.
         print('Downloading Assembly data as a Fasta file.')
         assemblyUtil = AssemblyUtil(self.callback_url)
         fasta_file = assemblyUtil.get_assembly_as_fasta({'ref': assembly_input_ref})
+
+        kbEAUtils = kb_ea_utils(self.callback_url, token=ctx['token'])
 
         # Step 3 - Actually perform the filter operation, saving the good contigs to a new fasta file.
         # We can use BioPython to parse the Fasta file and build and save the output to a file.
@@ -209,6 +216,11 @@ This sample module contains one small method - filter_contigs.
             raise ValueError('Cannot parse integer from testInt parameter (' + str(testInt_orig) + ')')
         if testInt < 0:
             raise ValueError('testInt parameter cannot be negative (' + str(testInt) + ')')
+
+        if 'metagenome' in test_params and test_params['metagenome'] == 1:
+            print "MMMMMMMETAgenome selected"
+        else
+            print "MMMMMMMETAgenome NNNNNNNNNNNot selected"
 
         resultStr = testStr + str(testInt) + str(testInt)
 
